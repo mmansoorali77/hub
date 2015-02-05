@@ -45,13 +45,14 @@ func transformInitArgs(args *Args) error {
 		err    error
 	)
 
-	if args.IsParamsEmpty() {
+	words := args.Words()
+	if len(words) == 0 {
 		name, err = utils.DirName()
 		if err != nil {
 			return err
 		}
 	} else {
-		name = args.LastParam()
+		name = words[0]
 		newDir = true
 	}
 
